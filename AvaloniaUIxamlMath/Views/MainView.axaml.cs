@@ -15,11 +15,6 @@ public partial class MainView : UserControl
     public MainView()
     {
         InitializeComponent();
-    }
-
-    public void ButtonClicked(object source, RoutedEventArgs args)
-    {
-        Debug.WriteLine("Click!");
 
         avaPlot1 = this.Find<AvaPlot>("AvaPlot1");
         if (avaPlot1 != null)
@@ -30,5 +25,11 @@ public partial class MainView : UserControl
             avaPlot1.Plot.YAxis.Label("Speed [m/s]");
             avaPlot1.Plot.XAxis2.Label("Speed versus distance with air resistance");
         }
+
+    }
+
+    public void ButtonClicked(object source, RoutedEventArgs args)
+    {
+        Debug.WriteLine("Click!");
     }
 }
