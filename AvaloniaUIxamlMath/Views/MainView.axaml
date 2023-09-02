@@ -5,7 +5,9 @@
              xmlns:vm="clr-namespace:AvaloniaUIxamlMath.ViewModels"
              xmlns:controls="clr-namespace:AvaloniaMath.Controls;assembly=AvaloniaMath"
              xmlns:ScottPlot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" 
+             d:DesignWidth="800" 
+             d:DesignHeight="450"
              x:Class="AvaloniaUIxamlMath.Views.MainView"
              x:DataType="vm:MainViewModel">
   <Design.DataContext>
@@ -14,8 +16,9 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
-  <StackPanel>
-    <Border Margin="5"
+  <Grid RowDefinitions="auto,*,auto">
+   <StackPanel>
+     <Border Margin="5"
       CornerRadius="10"
       Background="LightBlue">
       <TextBlock Margin="5"
@@ -24,7 +27,7 @@
          Text="Temperature Converter">
       </TextBlock>
     </Border>
-    <Grid ShowGridLines="True"  Margin="5"
+      <Grid ShowGridLines="True"  Margin="5"
           ColumnDefinitions="120, 300"
           RowDefinitions="Auto, Auto, Auto, Auto, Auto">
       <Label Grid.Row="0" Grid.Column="0" Margin="10">Celsius</Label>
@@ -45,8 +48,12 @@
         Margin="10"
         Formula="\left(x^2 + 2 \cdot x + 2\right) = 0" />
     </Grid>
-    <ScottPlot:AvaPlot
-      Name="AvaPlot1"/>
     <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
   </StackPanel>
+    <ScottPlot:AvaPlot
+      Grid.Row="1"
+        Name="AvaPlot1"/>
+
+  </Grid>
+
 </UserControl>
