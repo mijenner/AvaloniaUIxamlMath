@@ -6,8 +6,8 @@
              xmlns:controls="clr-namespace:AvaloniaMath.Controls;assembly=AvaloniaMath"
              xmlns:ScottPlot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
              mc:Ignorable="d" 
-             d:DesignWidth="800" 
-             d:DesignHeight="450"
+             d:DesignWidth="500" 
+             d:DesignHeight="600"
              x:Class="AvaloniaUIxamlMath.Views.MainView"
              x:DataType="vm:MainViewModel">
   <Design.DataContext>
@@ -24,16 +24,23 @@
       <TextBlock Margin="5"
          FontSize="24"
          HorizontalAlignment="Center"
-         Text="Temperature Converter">
+         Text="Avalonia Examples">
       </TextBlock>
     </Border>
       <Grid ShowGridLines="True"  Margin="5"
           ColumnDefinitions="120, 300"
           RowDefinitions="Auto, Auto, Auto, Auto, Auto">
       <Label Grid.Row="0" Grid.Column="0" Margin="10">Celsius</Label>
-      <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Text="0"/>
-      <Label Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</Label>
-      <TextBox Grid.Row="1"  Grid.Column="1" Margin="0 5" Text="0"/>
+      <TextBox Name="celsius"
+        Grid.Row="0" 
+               Grid.Column="1" 
+               Margin="0 5" 
+               Text="0"/>
+      <Label 
+        Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</Label>
+      <TextBox Name="fahrenheit"
+               IsReadOnly="True"
+        Grid.Row="1"  Grid.Column="1" Margin="0 5" Text="0"/>
       <Button
         Grid.Row="2"
         Grid.Column="1"
@@ -45,15 +52,17 @@
       <controls:FormulaBlock
         Grid.Row="3"
         Grid.Column="1"
-        Margin="10"
-        Formula="\left(x^2 + 2 \cdot x + 2\right) = 0" />
-    </Grid>
+        Margin="0 5"
+        Formula="\left(x^2 + \frac{\sqrt{2 \cdot x} + 2}{2x+3}\right) = 0" />
+      <ScottPlot:AvaPlot
+          Grid.Row="4"
+          Grid.Column="1"
+          Width="300"
+          Height="150"
+            Name="AvaPlot1"/>
+      </Grid>
     <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
   </StackPanel>
-    <ScottPlot:AvaPlot
-      Grid.Row="1"
-        Name="AvaPlot1"/>
-
   </Grid>
 
 </UserControl>

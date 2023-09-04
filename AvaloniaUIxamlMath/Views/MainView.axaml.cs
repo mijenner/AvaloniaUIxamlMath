@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Interactivity;
 using ScottPlot.Avalonia;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
 using System.Diagnostics;
 
 namespace AvaloniaUIxamlMath.Views;
@@ -23,13 +23,23 @@ public partial class MainView : UserControl
             avaPlot1.Refresh();
             avaPlot1.Plot.XAxis.Label("Distance [m]");
             avaPlot1.Plot.YAxis.Label("Speed [m/s]");
-            avaPlot1.Plot.XAxis2.Label("Speed versus distance with air resistance");
+            avaPlot1.Plot.XAxis2.Label("Speed versus distance");
         }
-
     }
 
     public void ButtonClicked(object source, RoutedEventArgs args)
     {
-        Debug.WriteLine("Click!");
+        Debug.WriteLine($"Click! Celsius={celsius.Text}");
+
+        if (Double.TryParse(celsius.Text, out double C))
+        {
+            var F = C * (9d / 5d) + 32;
+            fahrenheit.Text = F.ToString("0.0");
+        }
+        else
+        {
+            celsius.Text = "0";
+            fahrenheit.Text = "0";
+        }
     }
 }
